@@ -2,7 +2,9 @@ import { PageTransition } from '../components/PageTransition';
 import { AnimatedSection, AnimatedItem } from '../components/AnimatedSection';
 import { ArrowUpRight, Loader2, CheckCircle2, AlertCircle, Building2, UserCircle2, Mail, Briefcase, GraduationCap, Link as LinkIcon, Wrench, MessageSquare, MapPin } from 'lucide-react';
 import { useState } from 'react';
+import { supabase } from '../lib/supabase';
 import { motion, AnimatePresence } from 'motion/react';
+import {Turnstile} from '@marsidev/react-turnstile';
 
 export default function Contact() {
   const [formType, setFormType] = useState<'enterprise' | 'expert'>('enterprise');
@@ -18,6 +20,7 @@ export default function Contact() {
   const [expForm, setExpForm] = useState({ name: '', email: '', area: '', qual: '', tools: '', portfolio: '', message: '' });
   const [expErrors, setExpErrors] = useState<Partial<Record<keyof typeof expForm, string>>>({});
   const [expTouched, setExpTouched] = useState<Partial<Record<keyof typeof expForm, boolean>>>({});
+  const [turnstileToken, setTurnstileToken] = useState('');
 
   const validateEmail = (email: string) => /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email);
   const validateUrl = (url: string) => /^https?:\/\/.+/.test(url);
@@ -67,6 +70,11 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!turnstileToken) {
+  setStatus('error');
+  setErrorMessage('Please complete the security verification.');
+  return;
+}
     
     // Final Validation
     let hasError = false;
@@ -117,12 +125,48 @@ export default function Contact() {
       }
       
       // Simulate brief network delay for animation effect
-      await new Promise(resolve => setTimeout(resolve, 800));
-      
-      const mailtoUrl = `mailto:${targetEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      window.location.href = mailtoUrl;
-      
-      setStatus('success');
+if (formType === 'enterprise') {
+  const { error } = await supabase
+    .from('contacts')
+    .insert([
+      {
+        name: entForm.name,
+        email: entForm.email,
+        company: entForm.company,
+        requirement_area: entForm.requirement,
+        message: entForm.message,
+        created_at: new Date().toISOString(),
+        turnstile_token: turnstileToken
+      }
+    ]);
+
+  if (error) {
+    console.log("ENTERPRISE ERROR:", error);
+    throw error;
+  }
+} else {
+  const { error } = await supabase
+    .from('expert_applications')
+    .insert([
+      {
+        full_name: expForm.name,
+        email: expForm.email,
+        expertise_domain: expForm.area,
+        highest_qualification: expForm.qual,
+        tools_mastered: expForm.tools,
+        portfolio_link: expForm.portfolio || null,
+        background_intro: expForm.message,
+        turnstile_token: turnstileToken
+      }
+    ]);
+
+  if (error) {
+    console.log("EXPERT ERROR:", error);
+    throw error;
+  }
+}
+
+setStatus('success');
       
       // Reset forms safely
       if (formType === 'enterprise') {
@@ -132,6 +176,10 @@ export default function Contact() {
         setExpForm({ name: '', email: '', area: '', qual: '', tools: '', portfolio: '', message: '' });
         setExpTouched({});
       }
+
+// ✅ RESET TURNSTILE TOKEN HERE
+setTurnstileToken('');
+
 
       setTimeout(() => {
         setStatus('idle');
@@ -339,7 +387,10 @@ export default function Contact() {
                         <textarea id="ent_message" value={entForm.message} onChange={handleEntChange} onBlur={handleEntBlur} disabled={status === 'submitting'} rows={4} className={`bg-[#FDFCFB]/50 dark:bg-[#0A0A0A]/50 backdrop-blur-sm border ${entErrors.message ? 'border-red-500' : 'border-subtle hover:border-subtle/80'} rounded-2xl px-5 py-4 outline-none focus:border-[var(--accent)] focus:bg-primary transition-all resize-none text-primary disabled:opacity-50 placeholder:text-secondary/50`} placeholder="Describe the scale, domain, and specific needs of your AI initiative..." />
                         {entErrors.message && <span className="text-xs text-red-500 mt-1">{entErrors.message}</span>}
                       </div>
-
+<Turnstile
+  siteKey="0x4AAAAAADP3JYqicMa4Uevw"
+  onSuccess={(token) => setTurnstileToken(token)}
+/>
                       <button 
                         disabled={status === 'submitting'} 
                         className="w-full bg-[var(--accent)] text-white py-5 rounded-2xl text-sm font-bold uppercase tracking-widest hover:opacity-90 hover:shadow-[0_0_20px_rgba(var(--accent-rgb),0.3)] transition-all mt-4 flex items-center justify-center gap-2 disabled:cursor-not-allowed disabled:opacity-80"
@@ -438,7 +489,10 @@ export default function Contact() {
                         <textarea id="exp_message" value={expForm.message} onChange={handleExpChange} onBlur={handleExpBlur} disabled={status === 'submitting'} rows={3} className={`bg-[#FDFCFB]/50 dark:bg-[#0A0A0A]/50 backdrop-blur-sm border ${expErrors.message ? 'border-red-500' : 'border-subtle hover:border-subtle/80'} rounded-2xl px-5 py-4 outline-none focus:border-[var(--accent)] focus:bg-primary transition-all resize-none text-primary disabled:opacity-50 placeholder:text-secondary/50`} placeholder="Briefly describe your research focus and experience..." />
                         {expErrors.message && <span className="text-xs text-red-500 mt-1">{expErrors.message}</span>}
                       </div>
-
+<Turnstile
+  siteKey="0x4AAAAAADP3JYqicMa4Uevw"
+  onSuccess={(token) => setTurnstileToken(token)}
+/>
                       <button 
                         disabled={status === 'submitting'} 
                         className="w-full bg-[var(--accent)] text-white py-5 rounded-2xl text-sm font-bold uppercase tracking-widest hover:opacity-90 hover:shadow-[0_0_20px_rgba(var(--accent-rgb),0.3)] transition-all mt-4 flex items-center justify-center gap-2 disabled:cursor-not-allowed disabled:opacity-80"
