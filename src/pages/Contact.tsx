@@ -3,7 +3,7 @@ import { AnimatedSection, AnimatedItem } from '../components/AnimatedSection';
 import { ArrowUpRight, Loader2, CheckCircle2, AlertCircle, Building2, UserCircle2, Mail, Briefcase, GraduationCap, Link as LinkIcon, Wrench, MessageSquare, MapPin } from 'lucide-react';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import {Turnstile} from '@marsidev/react-turnstile';
+// import {Turnstile} from '@marsidev/react-turnstile'; // Optional bot protection
 
 export default function Contact() {
   const [formType, setFormType] = useState<'enterprise' | 'expert'>('enterprise');
@@ -19,7 +19,6 @@ export default function Contact() {
   const [expForm, setExpForm] = useState({ name: '', email: '', area: '', qual: '', tools: '', portfolio: '', message: '' });
   const [expErrors, setExpErrors] = useState<Partial<Record<keyof typeof expForm, string>>>({});
   const [expTouched, setExpTouched] = useState<Partial<Record<keyof typeof expForm, boolean>>>({});
-  const [turnstileToken, setTurnstileToken] = useState('');
 
   const validateEmail = (email: string) => /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email);
   const validateUrl = (url: string) => /^https?:\/\/.+/.test(url);
@@ -69,11 +68,7 @@ export default function Contact() {
 
 const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!turnstileToken) {
-      setStatus('error');
-      setErrorMessage('Please complete the security verification.');
-      return;
-    }
+    // Turnstile verification removed - install @marsidev/react-turnstile to enable bot protection
 
     // Final Validation
     let hasError = false;
@@ -165,8 +160,6 @@ const handleSubmit = async (e: React.FormEvent) => {
         setExpForm({ name: '', email: '', area: '', qual: '', tools: '', portfolio: '', message: '' });
         setExpTouched({});
       }
-
-      setTurnstileToken('');
       
       // Auto-reset after 5 seconds
       setTimeout(() => {
@@ -400,14 +393,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                     </div>
                   )}
 
-                  {/* Cloudflare Security Verification */}
-                  <div className="flex justify-center pt-2">
-                    <Turnstile
-                      siteKey="1x00000000000000000000AA"
-                      onSuccess={(token) => setTurnstileToken(token)}
-                      onExpire={() => setTurnstileToken('')}
-                    />
-                  </div>
+                  {/* Removed Cloudflare Turnstile - install @marsidev/react-turnstile to add bot protection */}
 
                   {/* Action Button layout handling */}
                   <button
