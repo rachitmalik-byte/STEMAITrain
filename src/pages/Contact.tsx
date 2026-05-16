@@ -272,7 +272,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                       <CheckCircle2 className="w-5 h-5 shrink-0 mt-0.5" />
                       <div>
                         <h4 className="font-semibold text-sm">Submission successful!</h4>
-                        <p className="text-xs text-orange-500/80 mt-1">>Thank you for connecting. Our specialized team will contact you shortly.</p>
+                        <p className="text-xs text-orange-500/80 mt-1">Thank you for connecting. Our specialized team will contact you shortly.</p>
                       </div>
                     </motion.div>
                   )}
