@@ -126,18 +126,26 @@ export default function Contact() {
       
       // Simulate brief network delay for animation effect
 if (formType === 'enterprise') {
-  const { error } = await supabase
-    .from('contacts')
-    .insert([
-      {
-        name: entForm.name,
-        email: entForm.email,
-        company: entForm.company,
-        requirement_area: entForm.requirement,
-        message: entForm.message,
-        created_at: new Date().toISOString(),
-        turnstile_token: turnstileToken
-      }
+  // 1. Create our empty digital shipping box
+  const googleFormData = new FormData();
+
+  // 2. Pack your React form states using your exact Google Form Entry IDs
+  googleFormData.append('entry.157807120', entForm.name);
+  googleFormData.append('entry.800572658', entForm.company);
+  googleFormData.append('entry.1030955062', entForm.email);
+  googleFormData.append('entry.483721231', entForm.requirement);
+  googleFormData.append('entry.1500569326', entForm.message);
+
+  // 3. Define the submission endpoint target URL
+  const googleFormURL = 'https://docs.google.com/forms/d/e/1FAIpQLSfC3GuziOcTUB6uUu7zEARHwdA3OwASh5OYlAs1IkfpNpHnYw/formResponse';
+
+  // 4. Submit via background fetch network request
+  await fetch(googleFormURL, {
+    method: 'POST',
+    mode: 'no-cors', // Essential for telling browsers to bypass standard CORS blocks
+    body: googleFormData
+  });
+}
     ]);
 
   if (error) {
