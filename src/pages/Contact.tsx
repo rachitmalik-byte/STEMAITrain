@@ -2,7 +2,6 @@ import { PageTransition } from '../components/PageTransition';
 import { AnimatedSection, AnimatedItem } from '../components/AnimatedSection';
 import { ArrowUpRight, Loader2, CheckCircle2, AlertCircle, Building2, UserCircle2, Mail, Briefcase, GraduationCap, Link as LinkIcon, Wrench, MessageSquare, MapPin } from 'lucide-react';
 import { useState } from 'react';
-import { supabase } from '../lib/supabase';
 import { motion, AnimatePresence } from 'motion/react';
 import {Turnstile} from '@marsidev/react-turnstile';
 
@@ -113,7 +112,7 @@ const handleSubmit = async (e: React.FormEvent) => {
 
     try {
       if (formType === 'enterprise') {
-        // 1. Pack Enterprise Form Data
+        // Submit Enterprise Form to Google Forms
         const enterpriseFormData = new FormData();
         enterpriseFormData.append('entry.157807120', entForm.name);
         enterpriseFormData.append('entry.800572658', entForm.company);
@@ -123,14 +122,17 @@ const handleSubmit = async (e: React.FormEvent) => {
 
         const enterpriseFormURL = 'https://docs.google.com/forms/d/e/1FAIpQLSfC3GuziOcTUB6uUu7zEARHwdA3OwASh5OYlAs1IkfpNpHnYw/formResponse';
 
-        await fetch(enterpriseFormURL, {
+        const response = await fetch(enterpriseFormURL, {
           method: 'POST',
           mode: 'no-cors',
           body: enterpriseFormData
         });
 
+        // no-cors mode returns opaque response, but form submission is still processed
+        console.log('Enterprise form submission initiated');
+
       } else {
-        // 2. Pack Individual Expert Form Data
+        // Submit Expert Form to Google Forms
         const expertFormData = new FormData();
         expertFormData.append('entry.1132860551', expForm.name);
         expertFormData.append('entry.1099594640', expForm.email);
@@ -142,16 +144,20 @@ const handleSubmit = async (e: React.FormEvent) => {
 
         const expertFormURL = 'https://docs.google.com/forms/d/e/1FAIpQLSclZmHLsA3uruaT5fQV3yNjtQcMTVVBfvNPlmtxWc_IxIYYSQ/formResponse';
 
-        await fetch(expertFormURL, {
+        const response = await fetch(expertFormURL, {
           method: 'POST',
           mode: 'no-cors',
           body: expertFormData
         });
+
+        // no-cors mode returns opaque response, but form submission is still processed
+        console.log('Expert form submission initiated');
       }
 
+      // Show success message
       setStatus('success');
 
-      // Reset forms safely
+      // Reset forms
       if (formType === 'enterprise') {
         setEntForm({ name: '', company: '', email: '', requirement: '', message: '' });
         setEntTouched({});
@@ -161,13 +167,16 @@ const handleSubmit = async (e: React.FormEvent) => {
       }
 
       setTurnstileToken('');
+      
+      // Auto-reset after 5 seconds
       setTimeout(() => {
         setStatus('idle');
       }, 5000);
 
     } catch (err) {
+      console.error('Form submission error:', err);
       setStatus('error');
-      setErrorMessage(err instanceof Error ? err.message : 'An unexpected error occurred.');
+      setErrorMessage(err instanceof Error ? err.message : 'An unexpected error occurred. Please try again.');
     }
   };
 
@@ -440,4 +449,3 @@ const handleSubmit = async (e: React.FormEvent) => {
 
 // Ensure the icon matches Lucide React's name
 const Arr0wUpRightIcon = ArrowUpRight;
-
