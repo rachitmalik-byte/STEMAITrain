@@ -170,331 +170,270 @@ const handleSubmit = async (e: React.FormEvent) => {
       setErrorMessage(err instanceof Error ? err.message : 'An unexpected error occurred.');
     }
   };
-      setErrorMessage(err instanceof Error ? err.message : 'An unexpected error occurred.');
-    }
-  };
 
   return (
     <PageTransition>
-      {/* Hero Header Area */}
-      <section className="pt-40 pb-20 px-6 relative overflow-hidden bg-glass border-b border-subtle dark:border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.05)]">
-        <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none" />
-        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[var(--accent)] rounded-full blur-[120px] opacity-[0.05] pointer-events-none translate-x-1/3 -translate-y-1/2" />
-        
-        <div className="max-w-7xl mx-auto relative z-10 text-center">
-          <AnimatedSection staggerChildren>
-            <AnimatedItem>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[var(--accent)] bg-[var(--accent)]/10 mb-8">
-                <div className="w-2 h-2 rounded-full bg-[var(--accent)] animate-pulse" />
-                <span className="text-xs font-mono uppercase tracking-widest text-[var(--accent)] font-bold">Connect</span>
-              </div>
-            </AnimatedItem>
-            <AnimatedItem>
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-sans font-medium tracking-tight leading-[1.1] mb-6 text-primary max-w-4xl mx-auto">
-                Start a conversation with <br /> <span className="text-[var(--accent)]">STEM AI Trainers.</span>
-              </h1>
-            </AnimatedItem>
-            <AnimatedItem>
-              <p className="text-xl md:text-2xl text-secondary font-light max-w-2xl mx-auto leading-relaxed">
-                Whether you need dedicated enterprise AI training operations or you're a domain expert looking to join our intelligence network.
-              </p>
-            </AnimatedItem>
-          </AnimatedSection>
-        </div>
-      </section>
+      <div className="min-h-screen bg-slate-950 text-slate-100 pt-24 pb-16 relative overflow-hidden">
+        {/* Background Grid Accent */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#0f172a_1px,transparent_1px),linear-gradient(to_bottom,#0f172a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
 
-      {/* Main Content Area */}
-      <section className="py-24 px-6 min-h-[70vh] flex items-start relative overflow-hidden">
-        <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-16 relative z-10">
-          
-          {/* Left Column: Info Hub */}
-          <AnimatedSection className="lg:col-span-4 flex flex-col gap-12">
-            <div className="bg-[#FFFFFF]/40 dark:bg-[#111111]/40 backdrop-blur-md rounded-3xl p-8 border border-subtle">
-              <h3 className="text-2xl font-serif font-medium text-primary mb-6">Contact Channels</h3>
-              
-              <div className="flex flex-col gap-8 text-primary">
-                <div className="group">
-                  <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-secondary mb-3 flex items-center gap-2">
-                    <Building2 className="w-3 h-3 text-[var(--accent)]" /> Enterprise Inquiries
-                  </p>
-                  <a href="mailto:info@stemaitrainers.com" className="text-xl font-medium hover:text-[var(--accent)] transition-colors inline-flex items-center gap-2">
-                    info@stemaitrainers.com 
-                    <Arr0wUpRightIcon className="w-5 h-5 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-[var(--accent)]" />
-                  </a>
-                </div>
-                
-                <div className="h-px w-full bg-subtle" />
-                
-                <div className="group">
-                  <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-secondary mb-3 flex items-center gap-2">
-                    <UserCircle2 className="w-3 h-3 text-[var(--accent)]" /> Join Network
-                  </p>
-                  <a href="mailto:info@stemaitrainers.com" className="text-xl font-medium hover:text-[var(--accent)] transition-colors inline-flex items-center gap-2">
-                    info@stemaitrainers.com 
-                    <Arr0wUpRightIcon className="w-5 h-5 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-[var(--accent)]" />
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-[#FFFFFF]/40 dark:bg-[#111111]/40 backdrop-blur-md rounded-3xl p-8 border border-subtle">
-              <h3 className="text-lg font-serif font-medium text-primary mb-6 flex items-center gap-3">
-                <MapPin className="w-5 h-5 text-[var(--accent)]" /> Global Operations
-              </h3>
-              <p className="text-secondary leading-relaxed font-light mb-4 text-sm">
-                Our intelligence network spans over 30 countries, providing localized and multilingual AI training securely worldwide.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {['North America', 'Europe', 'Asia Pacific', 'Remote'].map((region, idx) => (
-                  <span key={idx} className="text-[10px] font-mono tracking-wider px-3 py-1 rounded-full bg-primary border border-subtle text-secondary">
-                    {region}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </AnimatedSection>
-
-          {/* Right Column: Dynamic Form */}
-          <AnimatedSection delay={0.2} className="lg:col-span-8 bg-[#FFFFFF]/80 dark:bg-[#111111]/80 backdrop-blur-2xl rounded-[40px] p-8 md:p-12 lg:p-16 border border-[var(--accent)]/20 shadow-2xl relative overflow-hidden">
-            {/* Ambient inner glow */}
-            <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-bl from-[var(--accent)]/5 via-transparent to-transparent pointer-events-none" />
-
-            {status === 'success' ? (
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="flex flex-col items-center justify-center h-full text-center py-12"
-              >
-                <div className="w-24 h-24 bg-[#FDFCFB]/50 dark:bg-[#0A0A0A]/50 backdrop-blur-md rounded-full flex items-center justify-center mb-8 border border-[var(--accent)]/30 shadow-[0_0_30px_rgba(var(--accent-rgb),0.2)]">
-                  <CheckCircle2 className="w-12 h-12 text-[var(--accent)]" />
-                </div>
-                <h3 className="text-3xl font-sans tracking-tight text-primary mb-4 font-medium">Request Received</h3>
-                <p className="text-xl text-secondary max-w-md mx-auto mb-10 font-light leading-relaxed">
-                  Thank you for reaching out. We have successfully received your information and a member of our team will contact you shortly.
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+            
+            {/* Left Content Column */}
+            <div className="lg:col-span-5 space-y-8">
+              <AnimatedSection className="space-y-4">
+                <span className="text-xs font-semibold tracking-widest text-emerald-400 uppercase bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">
+                  Connect
+                </span>
+                <h1 className="text-4xl sm:text-5xl font-bold tracking-tight bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">
+                  Start a conversation with STEM AI Trainers.
+                </h1>
+                <p className="text-slate-400 text-lg leading-relaxed">
+                  Whether you need dedicated enterprise AI training operations or you're a domain expert looking to join our intelligence network.
                 </p>
-                <button 
-                  onClick={() => setStatus('idle')}
-                  className="px-8 py-4 bg-primary border border-subtle rounded-full text-sm font-bold tracking-widest uppercase hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors shadow-lg"
-                >
-                  Submit Another Inquiry
-                </button>
-              </motion.div>
-            ) : (
-              <>
-                <div className="flex gap-4 sm:gap-8 mb-12 border-b border-subtle pb-4 relative z-10">
-                  <button 
-                    onClick={() => { setFormType('enterprise'); setStatus('idle'); setErrorMessage(''); }}
-                    className={`text-xs sm:text-sm font-bold uppercase tracking-widest pb-3 border-b-2 transition-all relative ${formType === 'enterprise' ? 'border-[var(--accent)] text-primary' : 'border-transparent text-secondary hover:text-primary'}`}
+              </AnimatedSection>
+
+              <AnimatedSection delay={0.2} className="space-y-6 pt-4 border-t border-slate-800">
+                <h2 className="text-lg font-semibold text-slate-200">Contact Channels</h2>
+                
+                <div className="flex items-start gap-4">
+                  <div className="p-3 bg-emerald-500/10 rounded-xl border border-emerald-500/20 text-emerald-400 shrink-0">
+                    <Building2 className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-medium text-slate-400 uppercase tracking-wider">Enterprise Inquiries</h3>
+                    <p className="text-base text-slate-200 font-medium mt-1">info@stemaitrainers.com</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="p-3 bg-blue-500/10 rounded-xl border border-blue-500/20 text-blue-400 shrink-0">
+                    <UserCircle2 className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-medium text-slate-400 uppercase tracking-wider">Join Network</h3>
+                    <p className="text-base text-slate-200 font-medium mt-1">info@stemaitrainers.com</p>
+                  </div>
+                </div>
+              </AnimatedSection>
+
+              <AnimatedSection delay={0.4} className="p-6 bg-slate-900/50 rounded-2xl border border-slate-800/80 backdrop-blur-sm space-y-3">
+                <div className="flex items-center gap-2 text-emerald-400">
+                  <MapPin className="w-4 h-4" />
+                  <h4 className="text-sm font-semibold tracking-wide uppercase">Global Operations</h4>
+                </div>
+                <p className="text-sm text-slate-400 leading-relaxed">
+                  Our intelligence network spans over 30 countries, providing localized and multilingual AI training securely worldwide.
+                </p>
+                <div className="flex flex-wrap gap-2 text-xs text-slate-300 pt-2">
+                  <span className="px-2 py-1 bg-slate-800 rounded">North America</span>
+                  <span className="px-2 py-1 bg-slate-800 rounded">Europe</span>
+                  <span className="px-2 py-1 bg-slate-800 rounded">Asia Pacific</span>
+                  <span className="px-2 py-1 bg-slate-800 rounded">Remote</span>
+                </div>
+              </AnimatedSection>
+            </div>
+
+            {/* Right Form Column */}
+            <div className="lg:col-span-7">
+              <AnimatedSection delay={0.2} className="bg-slate-900/40 rounded-3xl border border-slate-800/80 p-6 sm:p-8 backdrop-blur-md shadow-xl relative">
+                
+                {/* Tab Switcher */}
+                <div className="flex p-1 bg-slate-950 rounded-xl border border-slate-850 mb-8">
+                  <button
+                    onClick={() => { setFormType('enterprise'); setErrorMessage(''); }}
+                    className={`flex-1 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 ${
+                      formType === 'enterprise'
+                        ? 'bg-gradient-to-r from-emerald-500/10 to-teal-500/10 text-emerald-400 border border-emerald-500/20 shadow-sm'
+                        : 'text-slate-400 hover:text-slate-200'
+                    }`}
                   >
                     Enterprise Partner
-                    {formType === 'enterprise' && (
-                      <motion.div layoutId="underline" className="absolute bottom-[-2px] left-0 right-0 h-[2px] bg-[var(--accent)]" />
-                    )}
                   </button>
-                  <button 
-                    onClick={() => { setFormType('expert'); setStatus('idle'); setErrorMessage(''); }}
-                    className={`text-xs sm:text-sm font-bold uppercase tracking-widest pb-3 border-b-2 transition-all relative ${formType === 'expert' ? 'border-[var(--accent)] text-primary' : 'border-transparent text-secondary hover:text-primary'}`}
+                  <button
+                    onClick={() => { setFormType('expert'); setErrorMessage(''); }}
+                    className={`flex-1 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 ${
+                      formType === 'expert'
+                        ? 'bg-gradient-to-r from-blue-500/10 to-indigo-500/10 text-blue-400 border border-blue-500/20 shadow-sm'
+                        : 'text-slate-400 hover:text-slate-200'
+                    }`}
                   >
                     Individual Expert
-                    {formType === 'expert' && (
-                      <motion.div layoutId="underline" className="absolute bottom-[-2px] left-0 right-0 h-[2px] bg-[var(--accent)]" />
-                    )}
                   </button>
                 </div>
 
-                {status === 'error' && (
-                  <div className="mb-8 p-4 bg-red-500/10 border border-red-500/20 rounded-2xl flex items-start gap-4 animate-in fade-in slide-in-from-top-2 relative z-10">
-                    <AlertCircle className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
-                    <div>
-                      <h4 className="text-sm font-semibold text-red-500 mb-1">Submission Failed</h4>
-                      <p className="text-sm text-red-500/80">{errorMessage}</p>
-                    </div>
-                  </div>
-                )}
-
-                <div className="relative z-10">
-                  {formType === 'enterprise' ? (
-                    <motion.form 
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      className="flex flex-col gap-6" 
-                      onSubmit={handleSubmit}
-                    >
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div className="flex flex-col gap-2 group">
-                          <label htmlFor="ent_name" className="text-xs font-bold uppercase tracking-wider text-secondary flex items-center gap-2">
-                            <UserCircle2 className="w-4 h-4" /> Full Name
-                          </label>
-                          <input type="text" id="ent_name" value={entForm.name} onChange={handleEntChange} onBlur={handleEntBlur} disabled={status === 'submitting'} className={`bg-[#FDFCFB]/50 dark:bg-[#0A0A0A]/50 backdrop-blur-sm border ${entErrors.name ? 'border-red-500' : 'border-subtle hover:border-subtle/80'} rounded-2xl px-5 py-4 outline-none focus:border-[var(--accent)] focus:bg-primary transition-all text-primary disabled:opacity-50 placeholder:text-secondary/50`} placeholder="Jane Doe" />
-                          {entErrors.name && <span className="text-xs text-red-500 mt-1">{entErrors.name}</span>}
-                        </div>
-                        <div className="flex flex-col gap-2 group">
-                          <label htmlFor="ent_company" className="text-xs font-bold uppercase tracking-wider text-secondary flex items-center gap-2">
-                            <Building2 className="w-4 h-4" /> Company
-                          </label>
-                          <input type="text" id="ent_company" value={entForm.company} onChange={handleEntChange} onBlur={handleEntBlur} disabled={status === 'submitting'} className={`bg-[#FDFCFB]/50 dark:bg-[#0A0A0A]/50 backdrop-blur-sm border ${entErrors.company ? 'border-red-500' : 'border-subtle hover:border-subtle/80'} rounded-2xl px-5 py-4 outline-none focus:border-[var(--accent)] focus:bg-primary transition-all text-primary disabled:opacity-50 placeholder:text-secondary/50`} placeholder="Acme AI Labs" />
-                          {entErrors.company && <span className="text-xs text-red-500 mt-1">{entErrors.company}</span>}
-                        </div>
+                {/* Status Messages */}
+                <AnimatePresence mode="wait">
+                  {status === 'success' && (
+                    <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="mb-6 p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl flex items-start gap-3 text-emerald-400">
+                      <CheckCircle2 className="w-5 h-5 shrink-0 mt-0.5" />
+                      <div>
+                        <h4 className="font-semibold text-sm">Submission successful!</h4>
+                        <p className="text-xs text-emerald-500/80 mt-1">Thank you for connecting. Our specialized team will contact you shortly.</p>
                       </div>
-                      
-                      <div className="flex flex-col gap-2 group">
-                        <label htmlFor="ent_email" className="text-xs font-bold uppercase tracking-wider text-secondary flex items-center gap-2">
-                          <Mail className="w-4 h-4" /> Work Email
-                        </label>
-                        <input type="email" id="ent_email" value={entForm.email} onChange={handleEntChange} onBlur={handleEntBlur} disabled={status === 'submitting'} className={`bg-[#FDFCFB]/50 dark:bg-[#0A0A0A]/50 backdrop-blur-sm border ${entErrors.email ? 'border-red-500' : 'border-subtle hover:border-subtle/80'} rounded-2xl px-5 py-4 outline-none focus:border-[var(--accent)] focus:bg-primary transition-all text-primary disabled:opacity-50 placeholder:text-secondary/50`} placeholder="jane@company.com" />
-                        {entErrors.email && <span className="text-xs text-red-500 mt-1">{entErrors.email}</span>}
-                      </div>
-                      
-                      <div className="flex flex-col gap-2 group">
-                        <label htmlFor="ent_requirement" className="text-xs font-bold uppercase tracking-wider text-secondary flex items-center gap-2">
-                          <Briefcase className="w-4 h-4" /> Requirement Area
-                        </label>
-                        <div className="relative">
-                          <select id="ent_requirement" value={entForm.requirement} onChange={handleEntChange} onBlur={handleEntBlur} disabled={status === 'submitting'} className={`w-full bg-[#FDFCFB]/50 dark:bg-[#0A0A0A]/50 backdrop-blur-sm border ${entErrors.requirement ? 'border-red-500' : 'border-subtle hover:border-subtle/80'} rounded-2xl px-5 py-4 outline-none focus:border-[var(--accent)] focus:bg-primary transition-all text-primary appearance-none disabled:opacity-50`}>
-                            <option value="">Select an area of interest</option>
-                            <option value="AI Training / RLHF">AI Training / RLHF</option>
-                            <option value="Model Evaluation">Model Evaluation</option>
-                            <option value="Synthetic Data Generation">Synthetic Data Generation</option>
-                            <option value="Other Services">Other Services</option>
-                          </select>
-                          <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none opacity-50">
-                            ▼
-                          </div>
-                        </div>
-                        {entErrors.requirement && <span className="text-xs text-red-500 mt-1">{entErrors.requirement}</span>}
-                      </div>
-
-                      <div className="flex flex-col gap-2 group">
-                        <label htmlFor="ent_message" className="text-xs font-bold uppercase tracking-wider text-secondary flex items-center gap-2">
-                          <MessageSquare className="w-4 h-4" /> Project Details
-                        </label>
-                        <textarea id="ent_message" value={entForm.message} onChange={handleEntChange} onBlur={handleEntBlur} disabled={status === 'submitting'} rows={4} className={`bg-[#FDFCFB]/50 dark:bg-[#0A0A0A]/50 backdrop-blur-sm border ${entErrors.message ? 'border-red-500' : 'border-subtle hover:border-subtle/80'} rounded-2xl px-5 py-4 outline-none focus:border-[var(--accent)] focus:bg-primary transition-all resize-none text-primary disabled:opacity-50 placeholder:text-secondary/50`} placeholder="Describe the scale, domain, and specific needs of your AI initiative..." />
-                        {entErrors.message && <span className="text-xs text-red-500 mt-1">{entErrors.message}</span>}
-                      </div>
-<Turnstile
-  siteKey="0x4AAAAAADP3JYqicMa4Uevw"
-  onSuccess={(token) => setTurnstileToken(token)}
-/>
-                      <button 
-                        disabled={status === 'submitting'} 
-                        className="w-full bg-[var(--accent)] text-white py-5 rounded-2xl text-sm font-bold uppercase tracking-widest hover:opacity-90 hover:shadow-[0_0_20px_rgba(var(--accent-rgb),0.3)] transition-all mt-4 flex items-center justify-center gap-2 disabled:cursor-not-allowed disabled:opacity-80"
-                      >
-                        {status === 'submitting' ? (
-                          <><Loader2 className="w-5 h-5 animate-spin" /> Submitting Request...</>
-                        ) : (
-                          'Submit Enterprise Inquiry'
-                        )}
-                      </button>
-                    </motion.form>
-                  ) : (
-                    <motion.form 
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      className="flex flex-col gap-6" 
-                      onSubmit={handleSubmit}
-                    >
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div className="flex flex-col gap-2 group">
-                          <label htmlFor="exp_name" className="text-xs font-bold uppercase tracking-wider text-secondary flex items-center gap-2">
-                            <UserCircle2 className="w-4 h-4" /> Full Name
-                          </label>
-                          <input type="text" id="exp_name" value={expForm.name} onChange={handleExpChange} onBlur={handleExpBlur} disabled={status === 'submitting'} className={`bg-[#FDFCFB]/50 dark:bg-[#0A0A0A]/50 backdrop-blur-sm border ${expErrors.name ? 'border-red-500' : 'border-subtle hover:border-subtle/80'} rounded-2xl px-5 py-4 outline-none focus:border-[var(--accent)] focus:bg-primary transition-all text-primary disabled:opacity-50 placeholder:text-secondary/50`} placeholder="Dr. John Smith" />
-                          {expErrors.name && <span className="text-xs text-red-500 mt-1">{expErrors.name}</span>}
-                        </div>
-                        <div className="flex flex-col gap-2 group">
-                          <label htmlFor="exp_email" className="text-xs font-bold uppercase tracking-wider text-secondary flex items-center gap-2">
-                            <Mail className="w-4 h-4" /> Professional Email
-                          </label>
-                          <input type="email" id="exp_email" value={expForm.email} onChange={handleExpChange} onBlur={handleExpBlur} disabled={status === 'submitting'} className={`bg-[#FDFCFB]/50 dark:bg-[#0A0A0A]/50 backdrop-blur-sm border ${expErrors.email ? 'border-red-500' : 'border-subtle hover:border-subtle/80'} rounded-2xl px-5 py-4 outline-none focus:border-[var(--accent)] focus:bg-primary transition-all text-primary disabled:opacity-50 placeholder:text-secondary/50`} placeholder="john.smith@university.edu" />
-                          {expErrors.email && <span className="text-xs text-red-500 mt-1">{expErrors.email}</span>}
-                        </div>
-                      </div>
-                      
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div className="flex flex-col gap-2 group">
-                          <label htmlFor="exp_area" className="text-xs font-bold uppercase tracking-wider text-secondary flex items-center gap-2">
-                            <Briefcase className="w-4 h-4" /> Area of Expertise
-                          </label>
-                          <div className="relative">
-                            <select id="exp_area" value={expForm.area} onChange={handleExpChange} onBlur={handleExpBlur} disabled={status === 'submitting'} className={`w-full bg-[#FDFCFB]/50 dark:bg-[#0A0A0A]/50 backdrop-blur-sm border ${expErrors.area ? 'border-red-500' : 'border-subtle hover:border-subtle/80'} rounded-2xl px-5 py-4 outline-none focus:border-[var(--accent)] focus:bg-primary transition-all text-primary appearance-none disabled:opacity-50`}>
-                              <option value="">Select Domain</option>
-                              <option value="Mathematics">Mathematics</option>
-                              <option value="Physics">Physics</option>
-                              <option value="Chemistry">Chemistry</option>
-                              <option value="Biology">Biology</option>
-                              <option value="Computer Science">Computer Science</option>
-                              <option value="Engineering">Engineering</option>
-                              <option value="Medicine">Medicine</option>
-                            </select>
-                            <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none opacity-50">▼</div>
-                          </div>
-                          {expErrors.area && <span className="text-xs text-red-500 mt-1">{expErrors.area}</span>}
-                        </div>
-                        <div className="flex flex-col gap-2 group">
-                          <label htmlFor="exp_qual" className="text-xs font-bold uppercase tracking-wider text-secondary flex items-center gap-2">
-                            <GraduationCap className="w-4 h-4" /> Highest Qualification
-                          </label>
-                          <div className="relative">
-                            <select id="exp_qual" value={expForm.qual} onChange={handleExpChange} onBlur={handleExpBlur} disabled={status === 'submitting'} className={`w-full bg-[#FDFCFB]/50 dark:bg-[#0A0A0A]/50 backdrop-blur-sm border ${expErrors.qual ? 'border-red-500' : 'border-subtle hover:border-subtle/80'} rounded-2xl px-5 py-4 outline-none focus:border-[var(--accent)] focus:bg-primary transition-all text-primary appearance-none disabled:opacity-50`}>
-                              <option value="">Select Level</option>
-                              <option value="PhD">PhD</option>
-                              <option value="Masters / MSc">Masters / MSc</option>
-                              <option value="Postdoctoral Researcher">Postdoctoral Researcher</option>
-                              <option value="Olympiad Medalist">Olympiad Medalist</option>
-                              <option value="Industry Expert">Industry Expert</option>
-                            </select>
-                            <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none opacity-50">▼</div>
-                          </div>
-                          {expErrors.qual && <span className="text-xs text-red-500 mt-1">{expErrors.qual}</span>}
-                        </div>
-                      </div>
-
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div className="flex flex-col gap-2 group">
-                          <label htmlFor="exp_tools" className="text-xs font-bold uppercase tracking-wider text-secondary flex items-center gap-2">
-                            <Wrench className="w-4 h-4" /> Tools Mastered
-                          </label>
-                          <input type="text" id="exp_tools" value={expForm.tools} onChange={handleExpChange} onBlur={handleExpBlur} disabled={status === 'submitting'} className={`bg-[#FDFCFB]/50 dark:bg-[#0A0A0A]/50 backdrop-blur-sm border ${expErrors.tools ? 'border-red-500' : 'border-subtle hover:border-subtle/80'} rounded-2xl px-5 py-4 outline-none focus:border-[var(--accent)] focus:bg-primary transition-all text-primary disabled:opacity-50 placeholder:text-secondary/50`} placeholder="Python, LaTeX, MATLAB, etc." />
-                          {expErrors.tools && <span className="text-xs text-red-500 mt-1">{expErrors.tools}</span>}
-                        </div>
-                        <div className="flex flex-col gap-2 group">
-                          <label htmlFor="exp_portfolio" className="text-xs font-bold uppercase tracking-wider text-secondary flex items-center gap-2">
-                            <LinkIcon className="w-4 h-4" /> Portfolio / LinkedIn <span className="opacity-50 ml-1">(Optional)</span>
-                          </label>
-                          <input type="url" id="exp_portfolio" value={expForm.portfolio} onChange={handleExpChange} onBlur={handleExpBlur} disabled={status === 'submitting'} className={`bg-[#FDFCFB]/50 dark:bg-[#0A0A0A]/50 backdrop-blur-sm border ${expErrors.portfolio ? 'border-red-500' : 'border-subtle hover:border-subtle/80'} rounded-2xl px-5 py-4 outline-none focus:border-[var(--accent)] focus:bg-primary transition-all text-primary disabled:opacity-50 placeholder:text-secondary/50`} placeholder="https://linkedin.com/in/..." />
-                          {expErrors.portfolio && <span className="text-xs text-red-500 mt-1">{expErrors.portfolio}</span>}
-                        </div>
-                      </div>
-
-                      <div className="flex flex-col gap-2 group">
-                        <label htmlFor="exp_message" className="text-xs font-bold uppercase tracking-wider text-secondary flex items-center gap-2">
-                          <MessageSquare className="w-4 h-4" /> Background Introduction
-                        </label>
-                        <textarea id="exp_message" value={expForm.message} onChange={handleExpChange} onBlur={handleExpBlur} disabled={status === 'submitting'} rows={3} className={`bg-[#FDFCFB]/50 dark:bg-[#0A0A0A]/50 backdrop-blur-sm border ${expErrors.message ? 'border-red-500' : 'border-subtle hover:border-subtle/80'} rounded-2xl px-5 py-4 outline-none focus:border-[var(--accent)] focus:bg-primary transition-all resize-none text-primary disabled:opacity-50 placeholder:text-secondary/50`} placeholder="Briefly describe your research focus and experience..." />
-                        {expErrors.message && <span className="text-xs text-red-500 mt-1">{expErrors.message}</span>}
-                      </div>
-<Turnstile
-  siteKey="0x4AAAAAADP3JYqicMa4Uevw"
-  onSuccess={(token) => setTurnstileToken(token)}
-/>
-                      <button 
-                        disabled={status === 'submitting'} 
-                        className="w-full bg-[var(--accent)] text-white py-5 rounded-2xl text-sm font-bold uppercase tracking-widest hover:opacity-90 hover:shadow-[0_0_20px_rgba(var(--accent-rgb),0.3)] transition-all mt-4 flex items-center justify-center gap-2 disabled:cursor-not-allowed disabled:opacity-80"
-                      >
-                        {status === 'submitting' ? (
-                          <><Loader2 className="w-5 h-5 animate-spin" /> Submitting Application...</>
-                        ) : (
-                          'Apply to Intelligence Network'
-                        )}
-                      </button>
-                    </motion.form>
+                    </motion.div>
                   )}
-                </div>
-              </>
-            )}
-          </AnimatedSection>
+
+                  {status === 'error' && (
+                    <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="mb-6 p-4 bg-rose-500/10 border border-rose-500/20 rounded-xl flex items-start gap-3 text-rose-400">
+                      <AlertCircle className="w-5 h-5 shrink-0 mt-0.5" />
+                      <div>
+                        <h4 className="font-semibold text-sm">Submission Failed</h4>
+                        <p className="text-xs text-rose-500/80 mt-1">{errorMessage || 'Please correct the issues highlighted below.'}</p>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
+                {/* Main Interactive Form Tag without action/mailto overrides */}
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  {formType === 'enterprise' ? (
+                    <div className="space-y-5">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                        <div className="space-y-2">
+                          <label htmlFor="ent_name" className="text-xs font-semibold tracking-wider text-slate-400 uppercase flex items-center gap-1.5"><UserCircle2 className="w-3.5 h-3.5" /> Full Name</label>
+                          <input type="text" id="ent_name" value={entForm.name} onChange={handleEntChange} onBlur={handleEntBlur} placeholder="Jane Doe" className={`w-full bg-slate-950/60 border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-1 transition-all ${entErrors.name && entTouched.name ? 'border-rose-500/50 focus:ring-rose-500/30' : 'border-slate-800 focus:border-emerald-500/50 focus:ring-emerald-500/30'}`} />
+                          {entErrors.name && entTouched.name && <p className="text-xs text-rose-400 flex items-center gap-1 mt-1"><AlertCircle className="w-3 h-3" /> {entErrors.name}</p>}
+                        </div>
+                        <div className="space-y-2">
+                          <label htmlFor="ent_company" className="text-xs font-semibold tracking-wider text-slate-400 uppercase flex items-center gap-1.5"><Building2 className="w-3.5 h-3.5" /> Company</label>
+                          <input type="text" id="ent_company" value={entForm.company} onChange={handleEntChange} onBlur={handleEntBlur} placeholder="Acme AI Labs" className={`w-full bg-slate-950/60 border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-1 transition-all ${entErrors.company && entTouched.company ? 'border-rose-500/50 focus:ring-rose-500/30' : 'border-slate-800 focus:border-emerald-500/50 focus:ring-emerald-500/30'}`} />
+                          {entErrors.company && entTouched.company && <p className="text-xs text-rose-400 flex items-center gap-1 mt-1"><AlertCircle className="w-3 h-3" /> {entErrors.company}</p>}
+                        </div>
+                      </div>
+
+                      <div className="space-y-2">
+                        <label htmlFor="ent_email" className="text-xs font-semibold tracking-wider text-slate-400 uppercase flex items-center gap-1.5"><Mail className="w-3.5 h-3.5" /> Work Email</label>
+                        <input type="email" id="ent_email" value={entForm.email} onChange={handleEntChange} onBlur={handleEntBlur} placeholder="jane@company.com" className={`w-full bg-slate-950/60 border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-1 transition-all ${entErrors.email && entTouched.email ? 'border-rose-500/50 focus:ring-rose-500/30' : 'border-slate-800 focus:border-emerald-500/50 focus:ring-emerald-500/30'}`} />
+                        {entErrors.email && entTouched.email && <p className="text-xs text-rose-400 flex items-center gap-1 mt-1"><AlertCircle className="w-3 h-3" /> {entErrors.email}</p>}
+                      </div>
+
+                      <div className="space-y-2">
+                        <label htmlFor="ent_requirement" className="text-xs font-semibold tracking-wider text-slate-400 uppercase flex items-center gap-1.5"><Briefcase className="w-3.5 h-3.5" /> Requirement Area</label>
+                        <select id="ent_requirement" value={entForm.requirement} onChange={handleEntChange} onBlur={handleEntBlur} className={`w-full bg-slate-950 border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-1 transition-all appearance-none ${entErrors.requirement && entTouched.requirement ? 'border-rose-500/50 focus:ring-rose-500/30' : 'border-slate-800 focus:border-emerald-500/50 focus:ring-emerald-500/30'}`}>
+                          <option value="">Select an area of interest</option>
+                          <option value="AI Training / RLHF">AI Training / RLHF</option>
+                          <option value="Model Evaluation">Model Evaluation</option>
+                          <option value="Synthetic Data Generation">Synthetic Data Generation</option>
+                          <option value="Other Services">Other Services</option>
+                        </select>
+                        {entErrors.requirement && entTouched.requirement && <p className="text-xs text-rose-400 flex items-center gap-1 mt-1"><AlertCircle className="w-3 h-3" /> {entErrors.requirement}</p>}
+                      </div>
+
+                      <div className="space-y-2">
+                        <label htmlFor="ent_message" className="text-xs font-semibold tracking-wider text-slate-400 uppercase flex items-center gap-1.5"><MessageSquare className="w-3.5 h-3.5" /> Project Details</label>
+                        <textarea id="ent_message" value={entForm.message} onChange={handleEntChange} onBlur={handleEntBlur} rows={4} placeholder="Describe the scale, domain, and specific needs of your AI initiative..." className={`w-full bg-slate-950/60 border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-1 transition-all resize-none ${entErrors.message && entTouched.message ? 'border-rose-500/50 focus:ring-rose-500/30' : 'border-slate-800 focus:border-emerald-500/50 focus:ring-emerald-500/30'}`} />
+                        {entErrors.message && entTouched.message && <p className="text-xs text-rose-400 flex items-center gap-1 mt-1"><AlertCircle className="w-3 h-3" /> {entErrors.message}</p>}
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="space-y-5">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                        <div className="space-y-2">
+                          <label htmlFor="exp_name" className="text-xs font-semibold tracking-wider text-slate-400 uppercase flex items-center gap-1.5"><UserCircle2 className="w-3.5 h-3.5" /> Full Name</label>
+                          <input type="text" id="exp_name" value={expForm.name} onChange={handleExpChange} onBlur={handleExpBlur} placeholder="Dr. Alan Turing" className={`w-full bg-slate-950/60 border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-1 transition-all ${expErrors.name && expTouched.name ? 'border-rose-500/50 focus:ring-rose-500/30' : 'border-slate-800 focus:border-blue-500/50 focus:ring-blue-500/30'}`} />
+                          {expErrors.name && expTouched.name && <p className="text-xs text-rose-400 flex items-center gap-1 mt-1"><AlertCircle className="w-3 h-3" /> {expErrors.name}</p>}
+                        </div>
+                        <div className="space-y-2">
+                          <label htmlFor="exp_email" className="text-xs font-semibold tracking-wider text-slate-400 uppercase flex items-center gap-1.5"><Mail className="w-3.5 h-3.5" /> Professional Email</label>
+                          <input type="email" id="exp_email" value={expForm.email} onChange={handleExpChange} onBlur={handleExpBlur} placeholder="alan@university.edu" className={`w-full bg-slate-950/60 border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-1 transition-all ${expErrors.email && expTouched.email ? 'border-rose-500/50 focus:ring-rose-500/30' : 'border-slate-800 focus:border-blue-500/50 focus:ring-blue-500/30'}`} />
+                          {expErrors.email && expTouched.email && <p className="text-xs text-rose-400 flex items-center gap-1 mt-1"><AlertCircle className="w-3 h-3" /> {expErrors.email}</p>}
+                        </div>
+                      </div>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                        <div className="space-y-2">
+                          <label htmlFor="exp_area" className="text-xs font-semibold tracking-wider text-slate-400 uppercase flex items-center gap-1.5"><Briefcase className="w-3.5 h-3.5" /> Area of Expertise</label>
+                          <select id="exp_area" value={expForm.area} onChange={handleExpChange} onBlur={handleExpBlur} className={`w-full bg-slate-950 border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-1 transition-all appearance-none ${expErrors.area && expTouched.area ? 'border-rose-500/50 focus:ring-rose-500/30' : 'border-slate-800 focus:border-blue-500/50 focus:ring-blue-500/30'}`}>
+                            <option value="">Select your core domain</option>
+                            <option value="Mathemetics">Mathematics</option>
+                            <option value="Physics">Physics</option>
+                            <option value="Chemistry">Chemistry</option>
+                            <option value="Biology">Biology</option>
+                            <option value="Computer Science">Computer Science</option>
+                            <option value="engineering">Engineering</option>
+                            <option value="Medicine">Medicine</option>
+                          </select>
+                          {expErrors.area && expTouched.area && <p className="text-xs text-rose-400 flex items-center gap-1 mt-1"><AlertCircle className="w-3 h-3" /> {expErrors.area}</p>}
+                        </div>
+                        <div className="space-y-2">
+                          <label htmlFor="exp_qual" className="text-xs font-semibold tracking-wider text-slate-400 uppercase flex items-center gap-1.5"><GraduationCap className="w-3.5 h-3.5" /> Highest Qualification</label>
+                          <select id="exp_qual" value={expForm.qual} onChange={handleExpChange} onBlur={handleExpBlur} className={`w-full bg-slate-950 border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-1 transition-all appearance-none ${expErrors.qual && expTouched.qual ? 'border-rose-500/50 focus:ring-rose-500/30' : 'border-slate-800 focus:border-blue-500/50 focus:ring-blue-500/30'}`}>
+                            <option value="">Select your credential</option>
+                            <option value="PhD">PhD</option>
+                            <option value="Masters / MSc">Masters / MSc</option>
+                            <option value="Postdoctoral Researcher">Postdoctoral Researcher</option>
+                            <option value="Olympiad Medalist">Olympiad Medalist</option>
+                            <option value="Industry Expert">Industry Expert</option>
+                          </select>
+                          {expErrors.qual && expTouched.qual && <p className="text-xs text-rose-400 flex items-center gap-1 mt-1"><AlertCircle className="w-3 h-3" /> {expErrors.qual}</p>}
+                        </div>
+                      </div>
+
+                      <div className="space-y-2">
+                        <label htmlFor="exp_tools" className="text-xs font-semibold tracking-wider text-slate-400 uppercase flex items-center gap-1.5"><Wrench className="w-3.5 h-3.5" /> Tools Mastered</label>
+                        <input type="text" id="exp_tools" value={expForm.tools} onChange={handleExpChange} onBlur={handleExpBlur} placeholder="LaTeX, MATLAB, Python, R, etc." className={`w-full bg-slate-950/60 border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-1 transition-all ${expErrors.tools && expTouched.tools ? 'border-rose-500/50 focus:ring-rose-500/30' : 'border-slate-800 focus:border-blue-500/50 focus:ring-blue-500/30'}`} />
+                        {expErrors.tools && expTouched.tools && <p className="text-xs text-rose-400 flex items-center gap-1 mt-1"><AlertCircle className="w-3 h-3" /> {expErrors.tools}</p>}
+                      </div>
+
+                      <div className="space-y-2">
+                        <label htmlFor="exp_portfolio" className="text-xs font-semibold tracking-wider text-slate-400 uppercase flex items-center gap-1.5"><LinkIcon className="w-3.5 h-3.5" /> Portfolio / LinkedIn</label>
+                        <input type="text" id="exp_portfolio" value={expForm.portfolio} onChange={handleExpChange} onBlur={handleExpBlur} placeholder="https://linkedin.com/in/username" className={`w-full bg-slate-950/60 border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-1 transition-all ${expErrors.portfolio && expTouched.portfolio ? 'border-rose-500/50 focus:ring-rose-500/30' : 'border-slate-800 focus:border-blue-500/50 focus:ring-blue-500/30'}`} />
+                        {expErrors.portfolio && expTouched.portfolio && <p className="text-xs text-rose-400 flex items-center gap-1 mt-1"><AlertCircle className="w-3 h-3" /> {expErrors.portfolio}</p>}
+                      </div>
+
+                      <div className="space-y-2">
+                        <label htmlFor="exp_message" className="text-xs font-semibold tracking-wider text-slate-400 uppercase flex items-center gap-1.5"><MessageSquare className="w-3.5 h-3.5" /> Background Introduction</label>
+                        <textarea id="exp_message" value={expForm.message} onChange={handleExpChange} onBlur={handleExpBlur} rows={4} placeholder="Briefly detail your specialized academic research or practical industry background..." className={`w-full bg-slate-950/60 border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-1 transition-all resize-none ${expErrors.message && expTouched.message ? 'border-rose-500/50 focus:ring-rose-500/30' : 'border-slate-800 focus:border-blue-500/50 focus:ring-blue-500/30'}`} />
+                        {expErrors.message && expTouched.message && <p className="text-xs text-rose-400 flex items-center gap-1 mt-1"><AlertCircle className="w-3 h-3" /> {expErrors.message}</p>}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Cloudflare Security Verification */}
+                  <div className="flex justify-center pt-2">
+                    <Turnstile
+                      siteKey="1x00000000000000000000AA"
+                      onSuccess={(token) => setTurnstileToken(token)}
+                      onExpire={() => setTurnstileToken('')}
+                    />
+                  </div>
+
+                  {/* Action Button layout handling */}
+                  <button
+                    type="submit"
+                    disabled={status === 'submitting'}
+                    className={`w-full rounded-xl py-3.5 px-4 font-semibold text-sm tracking-wide shadow-md hover:shadow-lg transition-all duration-200 flex items-center justify-center gap-2 border disabled:opacity-50 disabled:cursor-not-allowed ${
+                      formType === 'enterprise'
+                        ? 'bg-gradient-to-r from-emerald-500 to-teal-500 text-slate-950 border-emerald-400 hover:brightness-110'
+                        : 'bg-gradient-to-r from-blue-500 to-indigo-500 text-white border-blue-400 hover:brightness-110'
+                    }`}
+                  >
+                    {status === 'submitting' ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        Processing Request...
+                      </>
+                    ) : formType === 'enterprise' ? (
+                      <>
+                        Submit Enterprise Inquiry
+                        <ArrowUpRight className="w-4 h-4" />
+                      </>
+                    ) : (
+                      <>
+                        Submit Application
+                        <ArrowUpRight className="w-4 h-4" />
+                      </>
+                    )}
+                  </button>
+                </form>
+              </AnimatedSection>
+            </div>
+
+          </div>
         </div>
-      </section>
+      </div>
     </PageTransition>
   );
 }
