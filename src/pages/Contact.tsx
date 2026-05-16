@@ -185,7 +185,7 @@ const handleSubmit = async (e: React.FormEvent) => {
             {/* Left Content Column */}
             <div className="lg:col-span-5 space-y-8">
               <AnimatedSection className="space-y-4">
-                <span className="text-xs font-semibold tracking-widest text-emerald-400 uppercase bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">
+                <span className="text-xs font-semibold tracking-widest text-orange-400 uppercase bg-orange-500/10 px-3 py-1 rounded-full border border-orange-500/20">
                   Connect
                 </span>
                 <h1 className="text-4xl sm:text-5xl font-bold tracking-tight bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">
@@ -200,7 +200,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                 <h2 className="text-lg font-semibold text-slate-200">Contact Channels</h2>
                 
                 <div className="flex items-start gap-4">
-                  <div className="p-3 bg-emerald-500/10 rounded-xl border border-emerald-500/20 text-emerald-400 shrink-0">
+                  <div className="p-3 bg-orange-500/10 rounded-xl border border-orange-500/20 text-orange-400 shrink-0">
                     <Building2 className="w-5 h-5" />
                   </div>
                   <div>
@@ -221,7 +221,7 @@ const handleSubmit = async (e: React.FormEvent) => {
               </AnimatedSection>
 
               <AnimatedSection delay={0.4} className="p-6 bg-slate-900/50 rounded-2xl border border-slate-800/80 backdrop-blur-sm space-y-3">
-                <div className="flex items-center gap-2 text-emerald-400">
+                <div className="flex items-center gap-2 text-orange-400">
                   <MapPin className="w-4 h-4" />
                   <h4 className="text-sm font-semibold tracking-wide uppercase">Global Operations</h4>
                 </div>
@@ -246,8 +246,8 @@ const handleSubmit = async (e: React.FormEvent) => {
                   <button
                     onClick={() => { setFormType('enterprise'); setErrorMessage(''); }}
                     className={`flex-1 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 ${
-                      formType === 'enterprise'
-                        ? 'bg-gradient-to-r from-emerald-500/10 to-teal-500/10 text-emerald-400 border border-emerald-500/20 shadow-sm'
+  formType === 'enterprise'
+    ? 'bg-gradient-to-r from-orange-500/10 to-orange-600/10 text-orange-400 border border-orange-500/20 shadow-sm'
                         : 'text-slate-400 hover:text-slate-200'
                     }`}
                   >
@@ -268,11 +268,11 @@ const handleSubmit = async (e: React.FormEvent) => {
                 {/* Status Messages */}
                 <AnimatePresence mode="wait">
                   {status === 'success' && (
-                    <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="mb-6 p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl flex items-start gap-3 text-emerald-400">
+                    <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="mb-6 p-4 bg-orange-500/10 border border-orange-500/20 rounded-xl flex items-start gap-3 text-orange-400">
                       <CheckCircle2 className="w-5 h-5 shrink-0 mt-0.5" />
                       <div>
                         <h4 className="font-semibold text-sm">Submission successful!</h4>
-                        <p className="text-xs text-emerald-500/80 mt-1">Thank you for connecting. Our specialized team will contact you shortly.</p>
+                        <p className="text-xs text-orange-500/80 mt-1">>Thank you for connecting. Our specialized team will contact you shortly.</p>
                       </div>
                     </motion.div>
                   )}
@@ -295,25 +295,25 @@ const handleSubmit = async (e: React.FormEvent) => {
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                         <div className="space-y-2">
                           <label htmlFor="ent_name" className="text-xs font-semibold tracking-wider text-slate-400 uppercase flex items-center gap-1.5"><UserCircle2 className="w-3.5 h-3.5" /> Full Name</label>
-                          <input type="text" id="ent_name" value={entForm.name} onChange={handleEntChange} onBlur={handleEntBlur} placeholder="Jane Doe" className={`w-full bg-slate-950/60 border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-1 transition-all ${entErrors.name && entTouched.name ? 'border-rose-500/50 focus:ring-rose-500/30' : 'border-slate-800 focus:border-emerald-500/50 focus:ring-emerald-500/30'}`} />
+                          <input type="text" id="ent_name" value={entForm.name} onChange={handleEntChange} onBlur={handleEntBlur} placeholder="Jane Doe" className={`w-full bg-slate-950/60 border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-1 transition-all ${entErrors.name && entTouched.name ? 'border-rose-500/50 focus:ring-rose-500/30' : 'border-slate-800 focus:border-orange-500/50 focus:ring-orange-500/30'}`} />
                           {entErrors.name && entTouched.name && <p className="text-xs text-rose-400 flex items-center gap-1 mt-1"><AlertCircle className="w-3 h-3" /> {entErrors.name}</p>}
                         </div>
                         <div className="space-y-2">
                           <label htmlFor="ent_company" className="text-xs font-semibold tracking-wider text-slate-400 uppercase flex items-center gap-1.5"><Building2 className="w-3.5 h-3.5" /> Company</label>
-                          <input type="text" id="ent_company" value={entForm.company} onChange={handleEntChange} onBlur={handleEntBlur} placeholder="Acme AI Labs" className={`w-full bg-slate-950/60 border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-1 transition-all ${entErrors.company && entTouched.company ? 'border-rose-500/50 focus:ring-rose-500/30' : 'border-slate-800 focus:border-emerald-500/50 focus:ring-emerald-500/30'}`} />
+                          <input type="text" id="ent_company" value={entForm.company} onChange={handleEntChange} onBlur={handleEntBlur} placeholder="Acme AI Labs" className={`w-full bg-slate-950/60 border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-1 transition-all ${entErrors.company && entTouched.company ? 'border-rose-500/50 focus:ring-rose-500/30' : 'border-slate-800 focus:border-orange-500/50 focus:ring-orange-500/30'}`} />
                           {entErrors.company && entTouched.company && <p className="text-xs text-rose-400 flex items-center gap-1 mt-1"><AlertCircle className="w-3 h-3" /> {entErrors.company}</p>}
                         </div>
                       </div>
 
                       <div className="space-y-2">
                         <label htmlFor="ent_email" className="text-xs font-semibold tracking-wider text-slate-400 uppercase flex items-center gap-1.5"><Mail className="w-3.5 h-3.5" /> Work Email</label>
-                        <input type="email" id="ent_email" value={entForm.email} onChange={handleEntChange} onBlur={handleEntBlur} placeholder="jane@company.com" className={`w-full bg-slate-950/60 border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-1 transition-all ${entErrors.email && entTouched.email ? 'border-rose-500/50 focus:ring-rose-500/30' : 'border-slate-800 focus:border-emerald-500/50 focus:ring-emerald-500/30'}`} />
+                        <input type="email" id="ent_email" value={entForm.email} onChange={handleEntChange} onBlur={handleEntBlur} placeholder="jane@company.com" className={`w-full bg-slate-950/60 border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-1 transition-all ${entErrors.email && entTouched.email ? 'border-rose-500/50 focus:ring-rose-500/30' : 'border-slate-800 focus:border-orange-500/50 focus:ring-orange-500/30'}`} />
                         {entErrors.email && entTouched.email && <p className="text-xs text-rose-400 flex items-center gap-1 mt-1"><AlertCircle className="w-3 h-3" /> {entErrors.email}</p>}
                       </div>
 
                       <div className="space-y-2">
                         <label htmlFor="ent_requirement" className="text-xs font-semibold tracking-wider text-slate-400 uppercase flex items-center gap-1.5"><Briefcase className="w-3.5 h-3.5" /> Requirement Area</label>
-                        <select id="ent_requirement" value={entForm.requirement} onChange={handleEntChange} onBlur={handleEntBlur} className={`w-full bg-slate-950 border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-1 transition-all appearance-none ${entErrors.requirement && entTouched.requirement ? 'border-rose-500/50 focus:ring-rose-500/30' : 'border-slate-800 focus:border-emerald-500/50 focus:ring-emerald-500/30'}`}>
+                        <select id="ent_requirement" value={entForm.requirement} onChange={handleEntChange} onBlur={handleEntBlur} className={`w-full bg-slate-950 border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-1 transition-all appearance-none ${entErrors.requirement && entTouched.requirement ? 'border-rose-500/50 focus:ring-rose-500/30' : 'border-slate-800 focus:border-orange-500/50 focus:ring-orange-500/30'}`}>
                           <option value="">Select an area of interest</option>
                           <option value="AI Training / RLHF">AI Training / RLHF</option>
                           <option value="Model Evaluation">Model Evaluation</option>
@@ -325,7 +325,7 @@ const handleSubmit = async (e: React.FormEvent) => {
 
                       <div className="space-y-2">
                         <label htmlFor="ent_message" className="text-xs font-semibold tracking-wider text-slate-400 uppercase flex items-center gap-1.5"><MessageSquare className="w-3.5 h-3.5" /> Project Details</label>
-                        <textarea id="ent_message" value={entForm.message} onChange={handleEntChange} onBlur={handleEntBlur} rows={4} placeholder="Describe the scale, domain, and specific needs of your AI initiative..." className={`w-full bg-slate-950/60 border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-1 transition-all resize-none ${entErrors.message && entTouched.message ? 'border-rose-500/50 focus:ring-rose-500/30' : 'border-slate-800 focus:border-emerald-500/50 focus:ring-emerald-500/30'}`} />
+                        <textarea id="ent_message" value={entForm.message} onChange={handleEntChange} onBlur={handleEntBlur} rows={4} placeholder="Describe the scale, domain, and specific needs of your AI initiative..." className={`w-full bg-slate-950/60 border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-1 transition-all resize-none ${entErrors.message && entTouched.message ? 'border-rose-500/50 focus:ring-rose-500/30' : 'border-slate-800 focus:border-orange-500/50 focus:ring-orange-500/30'}`} />
                         {entErrors.message && entTouched.message && <p className="text-xs text-rose-400 flex items-center gap-1 mt-1"><AlertCircle className="w-3 h-3" /> {entErrors.message}</p>}
                       </div>
                     </div>
@@ -334,12 +334,12 @@ const handleSubmit = async (e: React.FormEvent) => {
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                         <div className="space-y-2">
                           <label htmlFor="exp_name" className="text-xs font-semibold tracking-wider text-slate-400 uppercase flex items-center gap-1.5"><UserCircle2 className="w-3.5 h-3.5" /> Full Name</label>
-                          <input type="text" id="exp_name" value={expForm.name} onChange={handleExpChange} onBlur={handleExpBlur} placeholder="Dr. Alan Turing" className={`w-full bg-slate-950/60 border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-1 transition-all ${expErrors.name && expTouched.name ? 'border-rose-500/50 focus:ring-rose-500/30' : 'border-slate-800 focus:border-blue-500/50 focus:ring-blue-500/30'}`} />
+                          <input type="text" id="exp_name" value={expForm.name} onChange={handleExpChange} onBlur={handleExpBlur} placeholder="Dr. Alan Turing" className={`w-full bg-slate-950/60 border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-1 transition-all ${expErrors.name && expTouched.name ? 'border-rose-500/50 focus:ring-rose-500/30' : 'border-slate-800 focus:border-orange-500/50 focus:ring-orange-500/30'}`} />
                           {expErrors.name && expTouched.name && <p className="text-xs text-rose-400 flex items-center gap-1 mt-1"><AlertCircle className="w-3 h-3" /> {expErrors.name}</p>}
                         </div>
                         <div className="space-y-2">
                           <label htmlFor="exp_email" className="text-xs font-semibold tracking-wider text-slate-400 uppercase flex items-center gap-1.5"><Mail className="w-3.5 h-3.5" /> Professional Email</label>
-                          <input type="email" id="exp_email" value={expForm.email} onChange={handleExpChange} onBlur={handleExpBlur} placeholder="alan@university.edu" className={`w-full bg-slate-950/60 border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-1 transition-all ${expErrors.email && expTouched.email ? 'border-rose-500/50 focus:ring-rose-500/30' : 'border-slate-800 focus:border-blue-500/50 focus:ring-blue-500/30'}`} />
+                          <input type="email" id="exp_email" value={expForm.email} onChange={handleExpChange} onBlur={handleExpBlur} placeholder="alan@university.edu" className={`w-full bg-slate-950/60 border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-1 transition-all ${expErrors.email && expTouched.email ? 'border-rose-500/50 focus:ring-rose-500/30' : 'border-slate-800 focus:border-orange-500/50 focus:ring-orange-500/30'}`} />
                           {expErrors.email && expTouched.email && <p className="text-xs text-rose-400 flex items-center gap-1 mt-1"><AlertCircle className="w-3 h-3" /> {expErrors.email}</p>}
                         </div>
                       </div>
@@ -347,7 +347,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                         <div className="space-y-2">
                           <label htmlFor="exp_area" className="text-xs font-semibold tracking-wider text-slate-400 uppercase flex items-center gap-1.5"><Briefcase className="w-3.5 h-3.5" /> Area of Expertise</label>
-                          <select id="exp_area" value={expForm.area} onChange={handleExpChange} onBlur={handleExpBlur} className={`w-full bg-slate-950 border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-1 transition-all appearance-none ${expErrors.area && expTouched.area ? 'border-rose-500/50 focus:ring-rose-500/30' : 'border-slate-800 focus:border-blue-500/50 focus:ring-blue-500/30'}`}>
+                          <select id="exp_area" value={expForm.area} onChange={handleExpChange} onBlur={handleExpBlur} className={`w-full bg-slate-950 border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-1 transition-all appearance-none ${expErrors.area && expTouched.area ? 'border-rose-500/50 focus:ring-rose-500/30' : 'border-slate-800 focus:border-orange-500/50 focus:ring-orange-500/30'}`}>
                             <option value="">Select your core domain</option>
                             <option value="Mathemetics">Mathematics</option>
                             <option value="Physics">Physics</option>
@@ -361,7 +361,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                         </div>
                         <div className="space-y-2">
                           <label htmlFor="exp_qual" className="text-xs font-semibold tracking-wider text-slate-400 uppercase flex items-center gap-1.5"><GraduationCap className="w-3.5 h-3.5" /> Highest Qualification</label>
-                          <select id="exp_qual" value={expForm.qual} onChange={handleExpChange} onBlur={handleExpBlur} className={`w-full bg-slate-950 border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-1 transition-all appearance-none ${expErrors.qual && expTouched.qual ? 'border-rose-500/50 focus:ring-rose-500/30' : 'border-slate-800 focus:border-blue-500/50 focus:ring-blue-500/30'}`}>
+                          <select id="exp_qual" value={expForm.qual} onChange={handleExpChange} onBlur={handleExpBlur} className={`w-full bg-slate-950 border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-1 transition-all appearance-none ${expErrors.qual && expTouched.qual ? 'border-rose-500/50 focus:ring-rose-500/30' : 'border-slate-800 focus:border-orange-500/50 focus:ring-orange-500/30'}`}>
                             <option value="">Select your credential</option>
                             <option value="PhD">PhD</option>
                             <option value="Masters / MSc">Masters / MSc</option>
@@ -375,19 +375,19 @@ const handleSubmit = async (e: React.FormEvent) => {
 
                       <div className="space-y-2">
                         <label htmlFor="exp_tools" className="text-xs font-semibold tracking-wider text-slate-400 uppercase flex items-center gap-1.5"><Wrench className="w-3.5 h-3.5" /> Tools Mastered</label>
-                        <input type="text" id="exp_tools" value={expForm.tools} onChange={handleExpChange} onBlur={handleExpBlur} placeholder="LaTeX, MATLAB, Python, R, etc." className={`w-full bg-slate-950/60 border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-1 transition-all ${expErrors.tools && expTouched.tools ? 'border-rose-500/50 focus:ring-rose-500/30' : 'border-slate-800 focus:border-blue-500/50 focus:ring-blue-500/30'}`} />
+                        <input type="text" id="exp_tools" value={expForm.tools} onChange={handleExpChange} onBlur={handleExpBlur} placeholder="LaTeX, MATLAB, Python, R, etc." className={`w-full bg-slate-950/60 border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-1 transition-all ${expErrors.tools && expTouched.tools ? 'border-rose-500/50 focus:ring-rose-500/30' : 'border-slate-800 focus:border-orange-500/50 focus:ring-orange-500/30'}`} />
                         {expErrors.tools && expTouched.tools && <p className="text-xs text-rose-400 flex items-center gap-1 mt-1"><AlertCircle className="w-3 h-3" /> {expErrors.tools}</p>}
                       </div>
 
                       <div className="space-y-2">
                         <label htmlFor="exp_portfolio" className="text-xs font-semibold tracking-wider text-slate-400 uppercase flex items-center gap-1.5"><LinkIcon className="w-3.5 h-3.5" /> Portfolio / LinkedIn</label>
-                        <input type="text" id="exp_portfolio" value={expForm.portfolio} onChange={handleExpChange} onBlur={handleExpBlur} placeholder="https://linkedin.com/in/username" className={`w-full bg-slate-950/60 border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-1 transition-all ${expErrors.portfolio && expTouched.portfolio ? 'border-rose-500/50 focus:ring-rose-500/30' : 'border-slate-800 focus:border-blue-500/50 focus:ring-blue-500/30'}`} />
+                        <input type="text" id="exp_portfolio" value={expForm.portfolio} onChange={handleExpChange} onBlur={handleExpBlur} placeholder="https://linkedin.com/in/username" className={`w-full bg-slate-950/60 border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-1 transition-all ${expErrors.portfolio && expTouched.portfolio ? 'border-rose-500/50 focus:ring-rose-500/30' : 'border-slate-800 focus:border-orange-500/50 focus:ring-orange-500/30'}`} />
                         {expErrors.portfolio && expTouched.portfolio && <p className="text-xs text-rose-400 flex items-center gap-1 mt-1"><AlertCircle className="w-3 h-3" /> {expErrors.portfolio}</p>}
                       </div>
 
                       <div className="space-y-2">
                         <label htmlFor="exp_message" className="text-xs font-semibold tracking-wider text-slate-400 uppercase flex items-center gap-1.5"><MessageSquare className="w-3.5 h-3.5" /> Background Introduction</label>
-                        <textarea id="exp_message" value={expForm.message} onChange={handleExpChange} onBlur={handleExpBlur} rows={4} placeholder="Briefly detail your specialized academic research or practical industry background..." className={`w-full bg-slate-950/60 border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-1 transition-all resize-none ${expErrors.message && expTouched.message ? 'border-rose-500/50 focus:ring-rose-500/30' : 'border-slate-800 focus:border-blue-500/50 focus:ring-blue-500/30'}`} />
+                        <textarea id="exp_message" value={expForm.message} onChange={handleExpChange} onBlur={handleExpBlur} rows={4} placeholder="Briefly detail your specialized academic research or practical industry background..." className={`w-full bg-slate-950/60 border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-1 transition-all resize-none ${expErrors.message && expTouched.message ? 'border-rose-500/50 focus:ring-rose-500/30' : 'border-slate-800 focus:border-orange-500/50 focus:ring-orange-500/30'}`} />
                         {expErrors.message && expTouched.message && <p className="text-xs text-rose-400 flex items-center gap-1 mt-1"><AlertCircle className="w-3 h-3" /> {expErrors.message}</p>}
                       </div>
                     </div>
@@ -401,8 +401,8 @@ const handleSubmit = async (e: React.FormEvent) => {
                     disabled={status === 'submitting'}
                     className={`w-full rounded-xl py-3.5 px-4 font-semibold text-sm tracking-wide shadow-md hover:shadow-lg transition-all duration-200 flex items-center justify-center gap-2 border disabled:opacity-50 disabled:cursor-not-allowed ${
                       formType === 'enterprise'
-                        ? 'bg-gradient-to-r from-emerald-500 to-teal-500 text-slate-950 border-emerald-400 hover:brightness-110'
-                        : 'bg-gradient-to-r from-blue-500 to-indigo-500 text-white border-blue-400 hover:brightness-110'
+                        ? 'bg-gradient-to-r from-orange-500 to-orange-600 text-slate-950 border-orange-400 hover:brightness-110'
+                        : 'bg-gradient-to-r from-orange-500 to-orange-600 text-white border-orange-400 hover:brightness-110'
                     }`}
                   >
                     {status === 'submitting' ? (
