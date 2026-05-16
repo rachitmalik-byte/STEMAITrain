@@ -68,14 +68,14 @@ export default function Contact() {
     setExpErrors(p => ({ ...p, [field]: validateExpField(field, expForm[field]) }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!turnstileToken) {
-  setStatus('error');
-  setErrorMessage('Please complete the security verification.');
-  return;
-}
-    
+      setStatus('error');
+      setErrorMessage('Please complete the security verification.');
+      return;
+    }
+
     // Final Validation
     let hasError = false;
     if (formType === 'enterprise') {
@@ -110,72 +110,47 @@ export default function Contact() {
 
     setStatus('submitting');
     setErrorMessage('');
-    
+
     try {
-      let subject = '';
-      let body = '';
-      const targetEmail = 'info@stemaitrainers.com';
-      
       if (formType === 'enterprise') {
-        subject = `Enterprise Inquiry: ${entForm.company} - ${entForm.requirement}`;
-        body = `Name: ${entForm.name}\nCompany: ${entForm.company}\nEmail: ${entForm.email}\nRequirement: ${entForm.requirement}\n\nProject Details:\n${entForm.message}`;
+        // 1. Pack Enterprise Form Data
+        const enterpriseFormData = new FormData();
+        enterpriseFormData.append('entry.157807120', entForm.name);
+        enterpriseFormData.append('entry.800572658', entForm.company);
+        enterpriseFormData.append('entry.1030955062', entForm.email);
+        enterpriseFormData.append('entry.483721231', entForm.requirement);
+        enterpriseFormData.append('entry.1500569326', entForm.message);
+
+        const enterpriseFormURL = 'https://docs.google.com/forms/d/e/1FAIpQLSfC3GuziOcTUB6uUu7zEARHwdA3OwASh5OYlAs1IkfpNpHnYw/formResponse';
+
+        await fetch(enterpriseFormURL, {
+          method: 'POST',
+          mode: 'no-cors',
+          body: enterpriseFormData
+        });
+
       } else {
-        subject = `Expert Network Application: ${expForm.name} - ${expForm.area}`;
-        body = `Name: ${expForm.name}\nEmail: ${expForm.email}\nArea of Expertise: ${expForm.area}\nQualification: ${expForm.qual}\nTools: ${expForm.tools}\nPortfolio: ${expForm.portfolio}\n\nIntroduction:\n${expForm.message}`;
+        // 2. Pack Individual Expert Form Data
+        const expertFormData = new FormData();
+        expertFormData.append('entry.1132860551', expForm.name);
+        expertFormData.append('entry.1099594640', expForm.email);
+        expertFormData.append('entry.1740919847', expForm.area);
+        expertFormData.append('entry.297797108', expForm.qual);
+        expertFormData.append('entry.117201284', expForm.tools);
+        expertFormData.append('entry.603129646', expForm.portfolio);
+        expertFormData.append('entry.1158572007', expForm.message);
+
+        const expertFormURL = 'https://docs.google.com/forms/d/e/1FAIpQLSclZmHLsA3uruaT5fQV3yNjtQcMTVVBfvNPlmtxWc_IxIYYSQ/formResponse';
+
+        await fetch(expertFormURL, {
+          method: 'POST',
+          mode: 'no-cors',
+          body: expertFormData
+        });
       }
-      
-      // Simulate brief network delay for animation effect
-if (formType === 'enterprise') {
-  // 1. Create our empty digital shipping box
-  const googleFormData = new FormData();
 
-  // 2. Pack your React form states using your exact Google Form Entry IDs
-  googleFormData.append('entry.157807120', entForm.name);
-  googleFormData.append('entry.800572658', entForm.company);
-  googleFormData.append('entry.1030955062', entForm.email);
-  googleFormData.append('entry.483721231', entForm.requirement);
-  googleFormData.append('entry.1500569326', entForm.message);
+      setStatus('success');
 
-  // 3. Define the submission endpoint target URL
-  const googleFormURL = 'https://docs.google.com/forms/d/e/1FAIpQLSfC3GuziOcTUB6uUu7zEARHwdA3OwASh5OYlAs1IkfpNpHnYw/formResponse';
-
-  // 4. Submit via background fetch network request
-  await fetch(googleFormURL, {
-    method: 'POST',
-    mode: 'no-cors', // Essential for telling browsers to bypass standard CORS blocks
-    body: googleFormData
-  });
-}
-    ]);
-
-  if (error) {
-    console.log("ENTERPRISE ERROR:", error);
-    throw error;
-  }
-} else {
-  const { error } = await supabase
-    .from('expert_applications')
-    .insert([
-      {
-        full_name: expForm.name,
-        email: expForm.email,
-        expertise_domain: expForm.area,
-        highest_qualification: expForm.qual,
-        tools_mastered: expForm.tools,
-        portfolio_link: expForm.portfolio || null,
-        background_intro: expForm.message,
-        turnstile_token: turnstileToken
-      }
-    ]);
-
-  if (error) {
-    console.log("EXPERT ERROR:", error);
-    throw error;
-  }
-}
-
-setStatus('success');
-      
       // Reset forms safely
       if (formType === 'enterprise') {
         setEntForm({ name: '', company: '', email: '', requirement: '', message: '' });
@@ -185,15 +160,16 @@ setStatus('success');
         setExpTouched({});
       }
 
-// ✅ RESET TURNSTILE TOKEN HERE
-setTurnstileToken('');
-
-
+      setTurnstileToken('');
       setTimeout(() => {
         setStatus('idle');
       }, 5000);
+
     } catch (err) {
       setStatus('error');
+      setErrorMessage(err instanceof Error ? err.message : 'An unexpected error occurred.');
+    }
+  };
       setErrorMessage(err instanceof Error ? err.message : 'An unexpected error occurred.');
     }
   };
