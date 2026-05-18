@@ -16,7 +16,7 @@ export function Navbar() {
     { path: '/services', label: 'Services' },
     { path: '/experts', label: 'Expert Network' },
     { path: '/research-services', label: 'Research Services' },
-    { path: '/pricing', label: 'Pricing' },
+    // { path: '/pricing', label: 'Pricing' }, (hide the pricing)
   ];
 
   const resourceLinks = [
@@ -142,7 +142,7 @@ export function Navbar() {
             </AnimatePresence>
           </div>
 
-          <Link
+          {/* <Link
             to="/pricing"
             className={clsx(
               'text-[12px] font-semibold transition-colors relative px-2 py-1',
@@ -151,7 +151,7 @@ export function Navbar() {
           >
             Pricing
           </Link>
-        </nav>
+        </nav> */}           pricing hide
 
         <div className="hidden md:flex items-center gap-4">
           <ThemeToggle />
