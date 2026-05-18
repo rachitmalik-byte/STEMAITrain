@@ -148,17 +148,18 @@ export function Navbar() {
               'text-[12px] font-semibold transition-colors relative px-2 py-1',
               location.pathname === '/pricing' ? 'text-primary' : 'text-secondary hover:text-primary'
             )}
-          >
-            Pricing
+          > Pricing
           </Link>
-        </nav> */}        
+        */}        
 
-       {/* <div className="hidden md:flex items-center gap-4">
-          <ThemeToggle />
-          <Link to="/contact" className="bg-[var(--text-primary)] text-[var(--bg-primary)] px-5 py-2.5 rounded-full text-[13px] font-bold tracking-wide hover:opacity-90 transition-opacity shadow-sm">
-            Contact
-          </Link>
-        </div> */}
+       </nav>
+
+    <div className="hidden md:flex items-center gap-4">
+      <ThemeToggle />
+      <Link to="/contact" className="bg-[var(--text-primary)] text-[var(--bg-primary)] px-5 py-2.5 rounded-full text-[13px] font-bold tracking-wide hover:opacity-90 transition-opacity shadow-sm">
+        Contact
+      </Link>
+    </div>
 
         {/* Mobile Nav Toggle */}
         <div className="flex md:hidden items-center gap-3 z-50">
