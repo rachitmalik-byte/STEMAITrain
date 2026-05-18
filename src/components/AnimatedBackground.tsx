@@ -38,7 +38,7 @@ export function AnimatedBackground() {
           backgroundImage: `linear-gradient(to right, var(--text-primary) 1px, transparent 1px), linear-gradient(to bottom, var(--text-primary) 1px, transparent 1px)`,
           backgroundSize: '4rem 4rem',
           backgroundPosition: 'center',
-          y: parallaxYGrid
+          y: parallaxYGrid,
           willChange: 'transform' // Add this line
         }}
       />
@@ -65,19 +65,24 @@ export function AnimatedBackground() {
           scale: [1, 1.1, 1]
         }}
         transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-        style={{ right: '5%', top: '10%', y: parallaxYGradient1
-               willChange: 'transform, opacity'}}
+        style={{ right: '5%', top: '10%', y: parallaxYGradient1,
+               willChange: 'transform, opacity'
+               }}
       />
       
       <motion.div
         className="absolute w-[50vw] h-[50vw] max-w-[500px] max-h-[500px] rounded-full blur-[100px] bg-purple-500/20 dark:bg-purple-400/10 transform-gpu"
         animate={{
           x: ["0%", "-10%", "0%"],
-          y: ["0%", "10%", "0%"],
-          scale: [1, 1.2, 1]
+          y: ["0%", "10%", "0%"]
         }}
-        transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
-        style={{ left: '5%', bottom: '10%', y: parallaxYMain,
+        transition={{ duration: 25,
+                     repeat: Infinity,
+                     ease: "easeInOut" }}
+        style={{
+          left: '5%',
+                bottom: '10%', 
+                y: parallaxYMain,
                willChange: 'transform, opacity'}}
       />
 
