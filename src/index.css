@@ -60,6 +60,39 @@
   .text-primary { color: var(--text-primary); }
   .text-secondary { color: var(--text-secondary); }
   .border-subtle { border-color: var(--border-color); }
+  .hero-aura {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 800px;
+  height: 800px;
+  transform: translate(-50%, -50%);
+  border-radius: 9999px;
+  background: rgba(249, 115, 22, 0.12);
+  filter: blur(80px);
+  pointer-events: none;
+
+  animation: pulseAura 6s ease-in-out infinite;
+
+  will-change: transform, opacity;
+}
+
+@keyframes pulseAura {
+  0% {
+    opacity: 0.2;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  50% {
+    opacity: 0.4;
+    transform: translate(-50%, -50%) scale(1.08);
+  }
+
+  100% {
+    opacity: 0.2;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
 
   .bg-grid-pattern {
     /* Grid disabled globally for a smoother gradient aesthetic */
