@@ -13,6 +13,7 @@ import { MagneticElement } from '../components/MagneticElement';
 import { OrbitalRings } from '../components/OrbitalRings';
 import { ClientSlider } from '../components/ClientSlider';
 import WorldMapLite from '../components/WorldMapLite'
+import { LazyMotion, domAnimation } from "framer-motion";
 
 export default function Home() {
   const { scrollY } = useScroll();
@@ -29,16 +30,20 @@ export default function Home() {
           transition={{ duration: 2, ease: "easeOut" }}
           className="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-black"
         >
-          <iframe 
-            src="src/assets/hand_shake.mp4?background=1&autoplay=1&loop=1&byline=0&title=0"
-            className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[100vh] min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-60" 
-            allow="autoplay; fullscreen" 
-            frameBorder="0"
-          ></iframe>
+          <video
+  autoPlay
+  muted
+  loop
+  playsInline
+  preload="metadata"
+  className="absolute inset-0 w-full h-full object-cover opacity-50"
+>
+  <source src="/hand_shake.mp4" type="video/mp4" />
+</video>
         </motion.div>
         {/* Orange glow aura */}
         <motion.div 
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] md:w-[800px] md:h-[800px] bg-orange-500/40 blur-[60px] md:blur-[90px] rounded-full z-0 pointer-events-none transform-gpu mix-blend-screen"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] md:w-[800px] md:h-[800px] bg-orange-500/20 blur-3xl rounded-full z-0 pointer-events-none transform-gpu mix-blend-screen"
           style={{ y: auraY, scale: auraScale }}
           animate={{
             opacity: [0.2, 0.5, 0.2],
@@ -96,7 +101,7 @@ export default function Home() {
                <div className="relative inline-block group cursor-default text-center">
                  {/* Pulsing Animated Glow */}
                  <motion.div 
-                   className="absolute inset-0 bg-gradient-to-r from-[var(--accent)] via-blue-500 to-purple-600 -z-10 group-hover:opacity-60 transition-opacity duration-1000 blur-[80px]"
+                   className="absolute inset-0 bg-gradient-to-r from-[var(--accent)] via-blue-500 to-purple-600 -z-10 group-hover:opacity-60 transition-opacity duration-1000 blur-3xl"
                    animate={{ 
                      opacity: [0.15, 0.5, 0.15],
                      scale: [0.9, 1.2, 0.9],
