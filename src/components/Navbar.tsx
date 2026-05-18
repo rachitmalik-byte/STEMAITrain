@@ -166,6 +166,7 @@ export function Navbar() {
           <button 
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="text-primary p-2 -mr-2"
+            aria-label="Toggle navigation menu" // Add this exact line
           >
             <LayoutGrid className="w-5 h-5" />
           </button>
