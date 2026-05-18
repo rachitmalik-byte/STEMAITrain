@@ -29,7 +29,7 @@ export default function Home() {
           className="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-black"
         >
           <iframe 
-            src="https://player.vimeo.com/video/1191878084?background=1&autoplay=1&loop=1&byline=0&title=0" 
+            src="https://vimeo.com/1193170703?share=copy&fl=sv&fe=ci?background=1&autoplay=1&loop=1&byline=0&title=0" 
             className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[100vh] min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-60" 
             allow="autoplay; fullscreen" 
             frameBorder="0"
