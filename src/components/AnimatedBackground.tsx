@@ -39,6 +39,7 @@ export function AnimatedBackground() {
           backgroundSize: '4rem 4rem',
           backgroundPosition: 'center',
           y: parallaxYGrid
+          willChange: 'transform' // Add this line
         }}
       />
       
@@ -51,6 +52,7 @@ export function AnimatedBackground() {
           y: mouseY,
           translateX: '-50%',
           translateY: '-50%',
+          willChange: 'transform'
         }}
       />
 
@@ -63,7 +65,8 @@ export function AnimatedBackground() {
           scale: [1, 1.1, 1]
         }}
         transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-        style={{ right: '5%', top: '10%', y: parallaxYGradient1 }}
+        style={{ right: '5%', top: '10%', y: parallaxYGradient1
+               willChange: 'transform, opacity'}}
       />
       
       <motion.div
@@ -74,7 +77,8 @@ export function AnimatedBackground() {
           scale: [1, 1.2, 1]
         }}
         transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
-        style={{ left: '5%', bottom: '10%', y: parallaxYMain }}
+        style={{ left: '5%', bottom: '10%', y: parallaxYMain
+               willChange: 'transform, opacity'}}
       />
 
       {/* Smooth Vignette */}
