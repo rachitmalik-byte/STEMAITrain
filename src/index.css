@@ -46,9 +46,7 @@
   }
 
   @media (min-width: 768px) {
-    *, *::before, *::after {
-      cursor: none !important;
-    }
+    *, *::before, *::after
   }
 
   /* Utility classes mapped to variables for easier use */
