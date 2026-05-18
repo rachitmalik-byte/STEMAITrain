@@ -43,12 +43,7 @@ export default function Home() {
         </motion.div>
         {/* Orange glow aura */}
 <div className="hero-aura" />
-          transition={{
-            duration: 5,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
+         
         
         {/* Dark overlay to ensure readability */}
         <div className="absolute inset-0 bg-black/50 z-0 pointer-events-none"></div>
