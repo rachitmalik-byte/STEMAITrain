@@ -489,7 +489,7 @@ export default function Home() {
                   <p className="text-[10px] uppercase font-bold tracking-[0.2em] opacity-40 mb-2">Network Status</p>
                   <p className="text-3xl font-serif tracking-wide text-primary"><AnimatedCounter value={500} suffix="+" /> <span className="italic">Experts</span></p>
                 </div>
-                <div className="w-2 h-2 rounded-full bg-[var(--accent)] animate-pulse motion-reduce:animate-none, shadow-xl"></div>
+                <div className="w-2 h-2 rounded-full bg-[var(--accent)] animate-pulse motion-reduce:animate-none shadow-xl"></div>
               </div>
               
               <div className="space-y-4 w-full mt-auto mb-8 relative z-10">
