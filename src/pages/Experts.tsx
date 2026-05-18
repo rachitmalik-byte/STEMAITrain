@@ -2,8 +2,9 @@ import { PageTransition } from '../components/PageTransition';
 import { AnimatedSection } from '../components/AnimatedSection';
 import { AnimatedCounter } from '../components/AnimatedCounter';
 import { BrainCircuit, Globe as GlobeIcon, Code2, GraduationCap, ShieldCheck, AlignLeft, Users, Zap, CheckCircle2 } from 'lucide-react';
-import { NetworkMap } from '../components/NetworkMap';
+// import { NetworkMap } from '../components/NetworkMap';
 import { Link } from 'react-router-dom';
+import WorldMapLite from '../components/WorldMapLite'
 
 export default function Experts() {
   return (
@@ -21,7 +22,7 @@ export default function Experts() {
                  Global Network Active
               </div>
               <h1 className="text-5xl md:text-7xl font-serif font-light tracking-tight leading-[1.1] mb-8 text-primary">
-                The <span className="italic text-[var(--accent)] font-medium">Expert</span> Network
+                The <span className="italic text-[var(--accent)] font-medium">Expert</span> 
               </h1>
               <p className="text-xl md:text-2xl text-secondary font-light max-w-2xl leading-relaxed mb-10">
                 A highly-vetted, globally distributed intelligence layer of independent researchers, PhDs, and domain specialists. Kept anonymous to preserve integrity.
@@ -38,7 +39,7 @@ export default function Experts() {
             
             <AnimatedSection delay={0.2} className="w-full lg:w-1/2 flex justify-center lg:justify-end mt-12 lg:mt-0">
               <div className="relative w-full max-w-lg aspect-square md:aspect-[4/3] lg:aspect-square bg-primary rounded-[40px] border border-subtle overflow-hidden p-8 flex flex-col justify-between shadow-xl">
-                <NetworkMap />
+                <WorldMapLite />
                 <div className="flex justify-between items-start relative z-10">
                   <div>
                     <p className="text-[10px] uppercase font-bold tracking-[0.2em] opacity-40 mb-2">Network Status</p>
