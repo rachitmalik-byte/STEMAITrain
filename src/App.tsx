@@ -9,7 +9,6 @@ import { motion } from 'motion/react';
 import Lenis from 'lenis';
 import { Layout } from './components/Layout';
 import { AnimatedBackground } from './components/AnimatedBackground';
-import { CustomCursor } from './components/CustomCursor';
 
 
 // Lazy load pages
@@ -70,7 +69,6 @@ export default function App() {
 
   return (
     <>
-      <CustomCursor />
       <AnimatedBackground />
       <Suspense fallback={<PageLoader />}>
         <Routes>
