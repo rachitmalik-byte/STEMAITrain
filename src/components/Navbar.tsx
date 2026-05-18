@@ -3,7 +3,7 @@ import { ThemeToggle } from './ThemeToggle';
 import { LayoutGrid, ChevronDown, Video, FileText, Star, HandHeart, Wrench, Megaphone, Inbox, Search, Code, UserCheck, GraduationCap, BookOpen, HelpCircle, Shield, Users, FileSearch } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { clsx } from 'clsx';
-import { motion, AnimatePresence, useScroll, useTransform, useSpring } from 'motion/react';
+import { motion, AnimatePresence, useScroll, useTransform, useSpring } from 'framer-motion';
 
 export function Navbar() {
   const location = useLocation();
