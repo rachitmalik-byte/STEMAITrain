@@ -77,7 +77,7 @@ export function AnimatedBackground() {
           scale: [1, 1.2, 1]
         }}
         transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
-        style={{ left: '5%', bottom: '10%', y: parallaxYMain
+        style={{ left: '5%', bottom: '10%', y: parallaxYMain,
                willChange: 'transform, opacity'}}
       />
 
