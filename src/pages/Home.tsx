@@ -270,6 +270,9 @@ export default function Home() {
                  <img 
                    src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=1600" 
                    alt="AI Logic Analysis"
+                   width="1200"     // Tells the browser to reserve an aspect ratio space
+  height="800"    // Prevents text from jumping when the image pops in
+  loading="lazy"  // Delays download until the user scrolls close to it
                    className="w-full h-full object-cover filter grayscale-[50%] opacity-40 group-hover:scale-105 group-hover:opacity-60 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
                  />
                  <div className="absolute inset-0 bg-gradient-to-br from-[var(--bg-primary)]/80 to-[var(--bg-secondary)]/90 mix-blend-multiply" />
@@ -320,6 +323,9 @@ export default function Home() {
                  <img 
                    src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1600" 
                    alt="Software Code Analysis"
+                   width="1200"     // Tells the browser to reserve an aspect ratio space
+  height="800"    // Prevents text from jumping when the image pops in
+  loading="lazy"  // Delays download until the user scrolls close to it
                    className="w-full h-full object-cover filter grayscale-[50%] opacity-40 group-hover:scale-105 group-hover:opacity-60 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
                  />
                  <div className="absolute inset-0 bg-gradient-to-br from-[var(--bg-primary)]/80 to-[var(--bg-secondary)]/90 mix-blend-multiply" />
@@ -419,6 +425,9 @@ export default function Home() {
                        <img 
                          src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800" 
                          alt="Raw pipeline"
+                         width="1200"     // Tells the browser to reserve an aspect ratio space
+  height="800"    // Prevents text from jumping when the image pops in
+  loading="lazy"  // Delays download until the user scrolls close to it
                          className="absolute inset-0 w-full h-full object-cover opacity-10 group-hover:opacity-30 group-hover:scale-110 transition-all duration-700 grayscale"
                        />
                        <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-transparent to-transparent z-10" />
@@ -501,6 +510,9 @@ export default function Home() {
                 <img 
                   src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1600" 
                   alt="Scientist in lab"
+                  width="1200"     // Tells the browser to reserve an aspect ratio space
+  height="800"    // Prevents text from jumping when the image pops in
+  loading="lazy"  // Delays download until the user scrolls close to it
                   className="w-full h-full object-cover filter grayscale opacity-80 group-hover:grayscale-0 group-hover:scale-105 group-hover:opacity-100 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-transparent to-transparent opacity-80 pointer-events-none z-10" />
