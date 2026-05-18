@@ -38,7 +38,7 @@ export default function Home() {
         </motion.div>
         {/* Orange glow aura */}
         <motion.div 
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] md:w-[800px] md:h-[800px] bg-orange-500/40 blur-[120px] md:blur-[180px] rounded-full z-0 pointer-events-none transform-gpu mix-blend-screen"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] md:w-[800px] md:h-[800px] bg-orange-500/40 blur-[60px] md:blur-[90px] rounded-full z-0 pointer-events-none transform-gpu mix-blend-screen"
           style={{ y: auraY, scale: auraScale }}
           animate={{
             opacity: [0.2, 0.5, 0.2],
