@@ -42,12 +42,7 @@ export default function Home() {
 </video>
         </motion.div>
         {/* Orange glow aura */}
-        <motion.div 
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] md:w-[800px] md:h-[800px] bg-orange-500/20 blur-3xl rounded-full z-0 pointer-events-none transform-gpu mix-blend-screen"
-          style={{ y: auraY, scale: auraScale }}
-          animate={{
-            opacity: [0.2, 0.5, 0.2],
-          }}
+<div className="hero-aura" />
           transition={{
             duration: 5,
             repeat: Infinity,
@@ -58,8 +53,8 @@ export default function Home() {
         {/* Dark overlay to ensure readability */}
         <div className="absolute inset-0 bg-black/50 z-0 pointer-events-none"></div>
         
-        {/* Light 3D Orbital Elements */}
-        <OrbitalRings />
+        {/* Light 3D Orbital Elements 
+         <OrbitalRings /> */}
 
         <div className="max-w-[1600px] w-full mx-auto relative z-10 flex flex-col justify-center min-h-[60vh]">
           <AnimatedSection className="w-full flex flex-col items-center justify-center text-center mt-12 lg:mt-0">
