@@ -8,10 +8,11 @@ import { TiltCard } from '../components/TiltCard';
 import { ArrowRight, Brain, Network, Microchip, Microscope, ChevronRight, Activity, Database, CheckSquare, Zap, Target, Code2, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'motion/react';
-import { NetworkMap } from '../components/NetworkMap';
+// import { NetworkMap } from '../components/NetworkMap';
 import { MagneticElement } from '../components/MagneticElement';
 import { OrbitalRings } from '../components/OrbitalRings';
 import { ClientSlider } from '../components/ClientSlider';
+import WorldMapLite from '../components/WorldMapLite'
 
 export default function Home() {
   const { scrollY } = useScroll();
@@ -482,13 +483,13 @@ export default function Home() {
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <AnimatedSection className="relative aspect-square md:aspect-[4/3] lg:aspect-square bg-primary rounded-[40px] border border-subtle overflow-hidden p-8 flex flex-col justify-between shadow-xl">
-              <NetworkMap />
+              <WorldMapLite />
               <div className="flex justify-between items-start relative z-10">
                 <div>
                   <p className="text-[10px] uppercase font-bold tracking-[0.2em] opacity-40 mb-2">Network Status</p>
                   <p className="text-3xl font-serif tracking-wide text-primary"><AnimatedCounter value={500} suffix="+" /> <span className="italic">Experts</span></p>
                 </div>
-                <div className="w-2 h-2 rounded-full bg-[var(--accent)] animate-pulse shadow-[0_0_10px_var(--accent)]"></div>
+                <div className="w-2 h-2 rounded-full bg-[var(--accent)] animate-pulse motion-reduce:animate-none, shadow-xl"></div>
               </div>
               
               <div className="space-y-4 w-full mt-auto mb-8 relative z-10">
