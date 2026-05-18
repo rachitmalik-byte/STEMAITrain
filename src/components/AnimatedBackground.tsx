@@ -1,4 +1,4 @@
-import { motion, useSpring, useScroll, useTransform } from 'framer-motion';
+import { motion, useSpring, useScroll, useTransform } from 'motion/react';
 import { useEffect, useState } from 'react';
 
 export function AnimatedBackground() {
