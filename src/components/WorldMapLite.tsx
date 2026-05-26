@@ -47,9 +47,11 @@ export default function WorldMapLite() {
                 <p className="text-[10px] text-neutral-400 leading-normal font-medium">{node.details}</p>
                 {/* Triangular arrow anchor point */}
                 <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-neutral-950/95 dark:border-t-black/95" />
-</div>
-        )}
-      </div>
-    </motion.div>
-  ))
+              </div>
+            )}
+          </div>
+        </motion.div>
+      ))}
+    </div>
+  );
 }
