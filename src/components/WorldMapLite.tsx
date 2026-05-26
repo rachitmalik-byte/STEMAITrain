@@ -13,6 +13,7 @@ const nodes = [
 ];
 
 export default function WorldMapLite() {
+    const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   return (
     <div className="absolute inset-0 w-full h-full opacity-70">
       {/* 170KB SVG — kept lazy, no change to visual */}
